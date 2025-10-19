@@ -1,0 +1,26 @@
+   <!-- iframe Container with responsive aspect ratio -->
+                        <div class="relative w-full" style="padding-bottom: 35%; /* Reduced height for more compact view */">
+                            <iframe 
+                                src="https://www.google.com/webhp?igu=1" 
+                                class="absolute top-0 left-0 w-full h-full border-0"
+                                title="Google Search"
+                                loading="lazy"
+                                sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                        
+                        <!-- Fallback message -->
+                        <noscript>
+                            <div class="p-8 text-center">
+                                <p class="text-gray-600 dark:text-gray-400 mb-4">
+                                    Para usar esta funcionalidade, você precisa habilitar JavaScript em seu navegador.
+                                </p>
+                                <a href="https://www.google.com" target="_blank" class="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 font-medium">
+                                    Abrir Google em nova aba
+                                    <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </noscript>
