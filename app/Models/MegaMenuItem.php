@@ -18,6 +18,7 @@ class MegaMenuItem extends Model
         'is_active',
         'open_in_new_tab',
         'category',
+        'user_id',
     ];
 
     protected $casts = [

@@ -9,4 +9,11 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateMegaMenuItem extends CreateRecord
 {
     protected static string $resource = MegaMenuItemResource::class;
+
+    protected function mutateFormDataBeforeCreate(array $data): array
+    {
+        $data['user_id'] = auth()->id();
+
+        return $data;
+    }
 }
