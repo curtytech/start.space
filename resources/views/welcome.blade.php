@@ -177,8 +177,9 @@
         </section>
 
         <section class="py-6 bg-gray-50 dark:bg-gray-800">
+
             <div class="max-w-5xl mx-auto px-6 lg:px-8">
-                <div class="bg-white dark:bg-gray-900 rounded-2xl shadow-xl overflow-hidden border border-gray-200 dark:border-gray-700">
+                <div class="bg-white dark:bg-gray-900 rounded-2xl shadow-xl overflow-hidden border border-gray-200 dark:border-gray-700 ">
                     <div class="bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-1 hidden md:block">
                         <div class="flex items-center justify-between">
                             <div class="flex flex-row items-center space-x-3">
@@ -211,7 +212,7 @@
                         </div>
                     </div>
                     <!-- UI estilo Google -->
-                    <div class="px-6 py-1 bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
+                    <div class="px-6 py-3 bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
                         <div class="flex flex-col items-center">
                             <div class="text-6xl font-semibold tracking-tight text-gray-900 dark:text-white">Google</div>
                             <form id="google-search-form" action="https://www.google.com/search" method="GET" target="_blank" rel="noopener noreferrer" class="mt-8 w-full max-w-3xl">
@@ -258,27 +259,16 @@
                 </div>
 
             </div>
+            
         </section>
 
         <section id="mega-menu" class="py-4">
             <div class="max-w-7xl mx-auto px-6 lg:px-8">
-                <!-- <div class="text-center mb-6">
-                    <h2 class="text-3xl font-bold text-gray-900 dark:text-white ">
-                        Atalhos Rápidos
-                    </h2>
-                    <p class="text-lg text-gray-600 dark:text-gray-300">
-                        Acesse rapidamente suas ferramentas e recursos favoritos
-                    </p>
-                </div> -->
-
-                <!-- Mega Menu Component -->
-                <x-ad-banner :slot="config('services.adsense.slot_main')" />
-
                 <x-mega-menu />
+
+                <x-ad-banner :slot="config('services.adsense.slot_main')" />
             </div>
         </section>
-
-        <!-- Google Search Section -->
 
 
         <!-- Footer -->
