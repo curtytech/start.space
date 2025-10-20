@@ -24,17 +24,15 @@
             <!-- Logo -->
             <div class="flex items-center">
                 <a href="/" class="flex items-center space-x-2">
-                    <div class="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                        </svg>
+                    <div class="flex items-center justify-center animate-pulse gap-2">
+                        <img src="{{ asset('img/LogoStartSpaceWhite.png') }}" alt="Logo Start Space" class="w-8 h-8  ">
+                        <span class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent ">{{ config('app.name', 'Starter Page') }}</span>
                     </div>
-                    <span class="text-xl font-bold text-gray-900 dark:text-white">{{ config('app.name', 'Starter Page') }}</span>
                 </a>
             </div>
 
             <!-- Navigation Links -->
-            <div class="hidden md:flex items-center space-x-8">
+            <div class="flex hidden md:flex items-center space-x-8 justify-end">
                 <a href="/" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors duration-200">
                     Início
                 </a>
@@ -54,11 +52,17 @@
                     </div>
                 </div>
 
-                <a href="/register" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors duration-200">
+                {{-- Registrar: só para convidados e se a rota existir --}}
+                @if (Route::has('register'))
+                @guest
+                <a href="{{ route('register') }}" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors duration-200">
                     Registrar
                 </a>
+                @endguest
+                @endif
+
                 <a href="/admin" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors duration-200">
-                    Admin
+                    Login
                 </a>
             </div>
 
@@ -134,143 +138,142 @@
         </div>
     </header>
 
-    <section class="bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 py-6">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
-            <h1 class="text-2xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
-                Bem-vindo ao
-                <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                    Start.Space </span>
-            </h1>
-            <p class="text-lg text-gray-600 dark:text-gray-300 mb-4 max-w-3xl mx-auto">
-                Sua página inicial personalizada com atalhos rápidos e acesso fácil às suas ferramentas favoritas.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#mega-menu" class="inline-flex items-center px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 font-medium">
-                    Explorar Atalhos
-                    <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </a>
-                <a href="#TaskList" class="inline-flex items-center px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 font-medium">
-                    Task List
-                </a>
-                @if (Route::has('login'))
-                @guest
-                <a href="{{ route('login') }}" class="inline-flex items-center px-8 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200 font-medium">
-                    Fazer Login
-                </a>
-                @endguest
-                @endif
-            </div>
-        </div>
-    </section>
-
-    <section class="py-6 bg-gray-50 dark:bg-gray-800">
-        <div class="max-w-5xl mx-auto px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-900 rounded-2xl shadow-xl overflow-hidden border border-gray-200 dark:border-gray-700">
-                <div class="bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-1">
-                    <div class="flex items-center justify-between">
-                        <div class="flex flex-row items-center space-x-3">
-                            <div class="flex space-x-2">
-                                <div class="w-3 h-3 bg-red-400 rounded-full"></div>
-                                <div class="w-3 h-3 bg-yellow-400 rounded-full"></div>
-                                <div class="w-3 h-3 bg-green-400 rounded-full"></div>
-                            </div>
-                            <span class="text-white font-medium">Google Search</span>
-                        </div>
-                        <div class="flex justify-end items-center gap-6 ">
-                            <a href="https://mail.google.com/" target="_blank" rel="noopener noreferrer"
-                                class="text-gray-300 hover:text-white dark:text-gray-300 dark:hover:text-white">
-                                Gmail
-                            </a>
-                            <a href="https://www.google.com/imghp?hl=pt-BR" target="_blank" rel="noopener noreferrer"
-                                class="text-gray-300 hover:text-white dark:text-gray-300 dark:hover:text-white">
-                                Imagens
-                            </a>
-                            <a href="https://about.google/products/" target="_blank" rel="noopener noreferrer"
-                                class="text-gray-300 hover:text-white dark:text-gray-300 dark:hover:text-white">
-                                Produtos
-                            </a>
-
-                            <a href="https://accounts.google.com/ServiceLogin" target="_blank" rel="noopener noreferrer"
-                                class="px-4 py-2 rounded-full bg-blue-200 text-blue-900 font-medium hover:bg-blue-300">
-                                Fazer login
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- UI estilo Google -->
-                <div class="px-6 py-1 bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
-                    <!-- Barra superior (Gmail, Imagens, Apps, Login) -->
-
-
-                    <!-- Logo + barra de busca -->
-                    <div class="flex flex-col items-center">
-                        <div class="text-6xl font-semibold tracking-tight text-gray-900 dark:text-white">Google</div>
-                        <form id="google-search-form" action="https://www.google.com/search" method="GET" target="_blank" rel="noopener noreferrer" class="mt-8 w-full max-w-3xl">
-                            <label for="google-search-input" class="sr-only">Pesquisar no Google</label>
-                            <div class="relative">
-                                <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-300">
-                                    <i class="fa-solid fa-magnifying-glass"></i>
-                                </span>
-
-                                <input
-                                    id="google-search-input"
-                                    name="q"
-                                    type="text"
-                                    placeholder="Pesquisar no Google"
-                                    class="w-full h-14 pl-12 pr-28 rounded-full bg-gray-100 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 outline-none"
-                                    autocomplete="off" />
-
-                                <div class="absolute right-4 top-1/2 -translate-y-1/2 flex items-center gap-4 text-gray-400 dark:text-gray-300">
-                                    <button type="button" class="p-1" aria-label="Teclado">
-                                        <i class="fa-solid fa-keyboard"></i>
-                                    </button>
-                                    <button type="button" class="p-1" aria-label="Microfone">
-                                        <i class="fa-solid fa-microphone"></i>
-                                    </button>
-                                    <button type="button" class="p-1" aria-label="Pesquisa por imagem">
-                                        <i class="fa-solid fa-camera"></i>
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div class="mt-6 flex gap-3 justify-center">
-                                <button type="submit" class="px-5 py-2 rounded-md bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-100 hover:bg-gray-300 dark:hover:bg-gray-700">
-                                    Pesquisa Google
-                                </button>
-                                <button type="button" id="feeling-lucky" class="px-5 py-2 rounded-md bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-100 hover:bg-gray-300 dark:hover:bg-gray-700">
-                                    Estou com sorte
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
-
-            </div>
-
-        </div>
-    </section>
-
     <!-- Main Content -->
     <main class="min-h-screen bg-gray-50 dark:bg-gray-900">
-        <!-- Hero Section -->
+        <section class="bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 py-6">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+                <div class="hidden md:block">
+                <div class="flex flex-row items-center justify-center gap-3 animate-bounce" style="animation-duration: 4s;">
+                    <img src="{{ asset('img/LogoStartSpaceWhite.png') }}" alt="Logo Start Space" class="w-15 h-13 ">
+                    <h1 class="text-2xl md:text-6xl font-bold text-gray-900 dark:text-white ">
+                        Bem-vindo ao
+                        <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent ">
+                            Start.Space </span>
+                    </h1>
+                </div>
+                </div>
+                <p class="text-lg text-gray-600 dark:text-gray-300 mb-4 max-w-3xl mx-auto hidden md:block">
+                    Sua página inicial personalizada com atalhos rápidos e acesso fácil às suas ferramentas favoritas.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#mega-menu" class="inline-flex items-center justify-center px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 font-medium mx-auto">
+                        Explorar Atalhos
+                        <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </a>
+                    <!-- <a href="#TaskList" class="inline-flex items-center px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 font-medium">
+                        Task List
+                    </a> -->
+                    @if (Route::has('login'))
+                    @guest
+                    <a href="{{ route('login') }}" class="inline-flex items-center px-8 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200 font-medium">
+                        Fazer Login
+                    </a>
+                    @endguest
+                    @endif
+                </div>
+            </div>
+        </section>
 
-        <!-- Mega Menu Section -->
-        <section id="mega-menu" class="py-16">
+        <section class="py-6 bg-gray-50 dark:bg-gray-800">
+            <div class="max-w-5xl mx-auto px-6 lg:px-8">
+                <div class="bg-white dark:bg-gray-900 rounded-2xl shadow-xl overflow-hidden border border-gray-200 dark:border-gray-700">
+                    <div class="bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-1 hidden md:block">
+                        <div class="flex items-center justify-between">
+                            <div class="flex flex-row items-center space-x-3">
+                                <div class="flex space-x-2">
+                                    <div class="w-3 h-3 bg-red-400 rounded-full"></div>
+                                    <div class="w-3 h-3 bg-yellow-400 rounded-full"></div>
+                                    <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+                                </div>
+                                <span class="text-white font-medium">Google Search</span>
+                            </div>
+                            <div class="flex justify-end items-center gap-6 ">
+                                <a href="https://mail.google.com/" target="_blank" rel="noopener noreferrer"
+                                    class="text-gray-300 hover:text-white dark:text-gray-300 dark:hover:text-white">
+                                    Gmail
+                                </a>
+                                <a href="https://www.google.com/imghp?hl=pt-BR" target="_blank" rel="noopener noreferrer"
+                                    class="text-gray-300 hover:text-white dark:text-gray-300 dark:hover:text-white">
+                                    Imagens
+                                </a>
+                                <a href="https://about.google/products/" target="_blank" rel="noopener noreferrer"
+                                    class="text-gray-300 hover:text-white dark:text-gray-300 dark:hover:text-white">
+                                    Produtos
+                                </a>
+
+                                <a href="https://accounts.google.com/ServiceLogin" target="_blank" rel="noopener noreferrer"
+                                    class="px-4 py-2 rounded-full bg-blue-200 text-blue-900 font-medium hover:bg-blue-300 ">
+                                    Fazer login
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- UI estilo Google -->
+                    <div class="px-6 py-1 bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
+                        <div class="flex flex-col items-center">
+                            <div class="text-6xl font-semibold tracking-tight text-gray-900 dark:text-white">Google</div>
+                            <form id="google-search-form" action="https://www.google.com/search" method="GET" target="_blank" rel="noopener noreferrer" class="mt-8 w-full max-w-3xl">
+                                <label for="google-search-input" class="sr-only">Pesquisar no Google</label>
+                                <div class="relative">
+                                    <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-300">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                    </span>
+
+                                    <input
+                                        id="google-search-input"
+                                        name="q"
+                                        type="text"
+                                        placeholder="Pesquisar no Google"
+                                        class="w-full h-14 pl-12 pr-28 rounded-full bg-gray-100 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 outline-none"
+                                        autocomplete="off" />
+
+                                    <div class="absolute right-4 top-1/2 -translate-y-1/2 flex items-center gap-4 text-gray-400 dark:text-gray-30 hidden md:block0">
+                                        <button type="button" class="p-1" aria-label="Teclado">
+                                            <i class="fa-solid fa-keyboard"></i>
+                                        </button>
+                                        <button type="button" class="p-1" aria-label="Microfone">
+                                            <i class="fa-solid fa-microphone"></i>
+                                        </button>
+                                        <button type="button" class="p-1" aria-label="Pesquisa por imagem">
+                                            <i class="fa-solid fa-camera"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="mt-6 flex gap-3 justify-center">
+                                    <button type="submit" class="px-5 py-2 rounded-md bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-100 hover:bg-gray-300 dark:hover:bg-gray-700">
+                                        Pesquisa Google
+                                    </button>
+                                    <button type="button" id="feeling-lucky" class="px-5 py-2 rounded-md bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-100 hover:bg-gray-300 dark:hover:bg-gray-700">
+                                        Estou com sorte
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </section>
+
+        <section id="mega-menu" class="py-4">
             <div class="max-w-7xl mx-auto px-6 lg:px-8">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                <!-- <div class="text-center mb-6">
+                    <h2 class="text-3xl font-bold text-gray-900 dark:text-white ">
                         Atalhos Rápidos
                     </h2>
                     <p class="text-lg text-gray-600 dark:text-gray-300">
                         Acesse rapidamente suas ferramentas e recursos favoritos
                     </p>
-                </div>
+                </div> -->
 
                 <!-- Mega Menu Component -->
+                <x-ad-banner :slot="config('services.adsense.slot_main')" />
+
                 <x-mega-menu />
             </div>
         </section>
@@ -279,30 +282,20 @@
 
 
         <!-- Footer -->
-        <footer class="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 py-12">
+        <footer class="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 py-8">
             <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
                 <div class="flex items-center justify-center space-x-2 mb-4">
-                    <div class="w-6 h-6 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                        </svg>
-                    </div>
-                    <span class="text-lg font-semibold text-gray-900 dark:text-white">{{ config('app.name', 'Laravel') }}</span>
+                    <!-- <div class="w-6 h-6 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">                        -->
+                    <img src="{{ asset('img/LogoStartSpaceWhite.png') }}" alt="Logo Start Space" class="w-8 h-8">
+                    <!-- </div> -->
+                    <span class="text-lg font-semibold text-gray-900 dark:text-white">Start Space </span>
                 </div>
-                <p class="text-gray-600 dark:text-gray-400 mb-4">
-                    Desenvolvido com Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
+                <p class="text-gray-600 dark:text-gray-400 ">
+                    Desenvolvido por
+                    <a href="https://phelipecurty.vercel.app" target="_blank" class="text-blue-600 dark:text-blue-400 hover:underline">
+                        Phelipe Curty
+                    </a>
                 </p>
-                <div class="flex justify-center space-x-6">
-                    <a href="/admin" class="text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200">
-                        Admin Panel
-                    </a>
-                    <a href="https://laravel.com/docs" target="_blank" class="text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200">
-                        Documentação
-                    </a>
-                    <a href="https://github.com/laravel/laravel" target="_blank" class="text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200">
-                        GitHub
-                    </a>
-                </div>
             </div>
         </footer>
     </main>
@@ -407,3 +400,47 @@
 </body>
 
 </html>
+<script>
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    // Toggle do dropdown "Atalhos" (Desktop) via hover
+    const atalhosButton = document.getElementById('atalhos-button');
+    const atalhosMenu = document.getElementById('atalhos-menu');
+    const atalhosArrow = document.getElementById('atalhos-arrow');
+    const atalhosDropdown = document.getElementById('atalhos-dropdown');
+
+    if (atalhosButton && atalhosMenu && atalhosArrow && atalhosDropdown) {
+        const showAtalhos = () => {
+            atalhosMenu.classList.remove('opacity-0', 'invisible', 'scale-95');
+            atalhosMenu.classList.add('opacity-100', 'visible', 'scale-100');
+            atalhosArrow.classList.add('rotate-180');
+        };
+
+        const hideAtalhos = () => {
+            atalhosMenu.classList.remove('opacity-100', 'visible', 'scale-100');
+            atalhosMenu.classList.add('opacity-0', 'invisible', 'scale-95');
+            atalhosArrow.classList.remove('rotate-180');
+        };
+
+        // Abre ao passar o mouse e fecha ao sair do container
+        atalhosDropdown.addEventListener('mouseenter', showAtalhos);
+        atalhosDropdown.addEventListener('mouseleave', hideAtalhos);
+    }
+
+    // Toggle do dropdown "Atalhos" (Mobile)
+    const mobileAtalhosButton = document.getElementById('mobile-atalhos-button');
+    const mobileAtalhosMenu = document.getElementById('mobile-atalhos-menu');
+    const mobileAtalhosArrow = document.getElementById('mobile-atalhos-arrow');
+
+    if (mobileAtalhosButton && mobileAtalhosMenu && mobileAtalhosArrow) {
+        mobileAtalhosButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            mobileAtalhosMenu.classList.toggle('hidden');
+            mobileAtalhosArrow.classList.toggle('rotate-180');
+        });
+    }
+</script>

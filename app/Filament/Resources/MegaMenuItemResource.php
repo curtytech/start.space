@@ -19,7 +19,7 @@ class MegaMenuItemResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-squares-2x2';
     
-    protected static ?string $navigationLabel = 'Mega Menu';
+    protected static ?string $navigationLabel = 'Atalhos';
     
     protected static ?string $modelLabel = 'Item do Menu';
     
@@ -171,6 +171,12 @@ class MegaMenuItemResource extends Resource
             ])
             ->defaultSort('sort_order')
             ->reorderable('sort_order');
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->where('user_id', auth()->id());
     }
 
     public static function getRelations(): array

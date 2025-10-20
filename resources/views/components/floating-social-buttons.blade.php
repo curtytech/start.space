@@ -1,5 +1,5 @@
 <!-- Botões Flutuantes das Redes Sociais -->
-<div class="fixed bottom-6 right-6 z-50 flex flex-col space-y-3">
+<div class="fixed bottom-6 right-6 z-50 flex flex-col space-y-3 hidden md:block">
     <a href="https://youtube.com" 
        target="_blank" 
        rel="noopener noreferrer"

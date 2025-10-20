@@ -6,6 +6,7 @@ use App\Models\MegaMenuItem;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use App\Models\User;
 
 class MegaMenu extends Component
 {
@@ -17,7 +18,17 @@ class MegaMenu extends Component
      */
     public function __construct()
     {
-        $this->menuItems = MegaMenuItem::active()->ordered()->get();
+        $userId = auth()->id()
+            ?? User::where('role', 'admin')->value('id')
+            ?? User::value('id');
+
+        $query = MegaMenuItem::active()->ordered();
+
+        if ($userId) {
+            $query->where('user_id', $userId);
+        }
+
+        $this->menuItems = $query->get();
         $this->categories = $this->menuItems->pluck('category')->unique()->filter();
     }
 

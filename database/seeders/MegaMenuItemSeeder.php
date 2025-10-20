@@ -12,19 +12,17 @@ class MegaMenuItemSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    public static function seedForUser(int $userId): void
     {
-        $adminUser = User::where('role', 'admin')->first()
-            ?? User::first()
-            ?? User::factory()->create([
-                'name' => 'Admin',
-                'email' => 'admin@admin',
-                'role' => 'admin',
-            ]);
+        foreach (self::defaultItems() as $item) {
+            $item['user_id'] = $userId;
+            MegaMenuItem::create($item);
+        }
+    }
 
-        $userId = $adminUser->id;
-
-        $items = [
+    private static function defaultItems(): array
+    {
+        return [
             // Compras
             [
                 'title' => 'Amazon',
@@ -335,10 +333,20 @@ class MegaMenuItemSeeder extends Seeder
                 'open_in_new_tab' => true,
             ],
         ];
+    }
 
-        foreach ($items as $item) {
-            $item['user_id'] = $userId;
-            MegaMenuItem::create($item);
-        }
+    public function run(): void
+    {
+        $adminUser = User::where('role', 'admin')->first()
+            ?? User::first()
+            ?? User::factory()->create([
+                'name' => 'Admin',
+                'email' => 'admin@admin',
+                'role' => 'admin',
+            ]);
+
+        $userId = $adminUser->id;
+
+        self::seedForUser($userId);
     }
 }
