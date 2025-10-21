@@ -22,9 +22,9 @@
     @endif
 
     <!-- Menu Items Grid -->
-    <div class="px-4">
+    <!-- <div class="px-4">
         <x-ad-banner :slot="config('services.adsense.slot_main')" />
-    </div>
+    </div> -->
 
     <div class="p-4 max-h-96 overflow-y-auto">
         @if($menuItems->count() > 0)

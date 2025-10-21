@@ -25,7 +25,7 @@
             <div class="flex items-center">
                 <a href="/" class="flex items-center space-x-2">
                     <div class="flex items-center justify-center animate-pulse gap-2">
-                        <img src="{{ asset('img/LogoStartSpaceWhite.png') }}" alt="Logo Start Space" class="w-8 h-8  ">
+                        <img src="{{ asset('img/LogoStartSpaceWhite.png') }}" alt="Logo Start Space" class="w-10 h-8  ">
                         <span class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent ">{{ config('app.name', 'Starter Page') }}</span>
                     </div>
                 </a>
@@ -143,14 +143,14 @@
         <section class="bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 py-6">
             <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
                 <div class="hidden md:block">
-                <div class="flex flex-row items-center justify-center gap-3 animate-bounce" style="animation-duration: 4s;">
-                    <img src="{{ asset('img/LogoStartSpaceWhite.png') }}" alt="Logo Start Space" class="w-15 h-13 ">
-                    <h1 class="text-2xl md:text-6xl font-bold text-gray-900 dark:text-white ">
-                        Bem-vindo ao
-                        <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent ">
-                            Start.Space </span>
-                    </h1>
-                </div>
+                    <div class="flex flex-row items-center justify-center gap-3 animate-bounce" style="animation-duration: 4s;">
+                        <img src="{{ asset('img/LogoStartSpaceWhite.png') }}" alt="Logo Start Space" class="w-15 h-13 ">
+                        <h1 class="text-2xl md:text-6xl font-bold text-gray-900 dark:text-white ">
+                            Bem-vindo ao
+                            <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent ">
+                                Start.Space </span>
+                        </h1>
+                    </div>
                 </div>
                 <p class="text-lg text-gray-600 dark:text-gray-300 mb-4 max-w-3xl mx-auto hidden md:block">
                     Sua página inicial personalizada com atalhos rápidos e acesso fácil às suas ferramentas favoritas.
@@ -259,24 +259,26 @@
                 </div>
 
             </div>
-            
+
         </section>
 
         <section id="mega-menu" class="py-4">
             <div class="max-w-7xl mx-auto px-6 lg:px-8">
                 <x-mega-menu />
-
-                <x-ad-banner :slot="config('services.adsense.slot_main')" />
             </div>
         </section>
 
+        <section id="banner" class="py-4">
+            <p class="text-center text-lg font-bold text-gray-900 dark:text-white">banner ADS</p>
+            <x-ad-banner :slot="config('services.adsense.slot_main')" />
+        </section>
 
         <!-- Footer -->
         <footer class="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 py-8">
             <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
                 <div class="flex items-center justify-center space-x-2 mb-4">
                     <!-- <div class="w-6 h-6 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">                        -->
-                    <img src="{{ asset('img/LogoStartSpaceWhite.png') }}" alt="Logo Start Space" class="w-8 h-8">
+                    <img src="{{ asset('img/LogoStartSpaceWhite.png') }}" alt="Logo Start Space" class="w-9 h-8">
                     <!-- </div> -->
                     <span class="text-lg font-semibold text-gray-900 dark:text-white">Start Space </span>
                 </div>
