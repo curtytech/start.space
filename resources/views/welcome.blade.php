@@ -17,7 +17,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="font-sans antialiased dark:bg-black dark:text-white/50">
+<body class="font-sans antialiased bg-white text-gray-900 dark:bg-black dark:text-white/50">
     <!-- Header -->
     <header class="bg-white dark:bg-gray-900 shadow-sm border-b border-gray-200 dark:border-gray-700">
         <nav class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
@@ -67,6 +67,7 @@
             </div>
 
             <!-- Right Side Actions -->
+            <!-- Dentro da header, no bloco "Right Side Actions" -->
             <div class="flex items-center space-x-4">
                 @if (Route::has('login'))
                 @auth
@@ -91,6 +92,15 @@
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
+                </button>
+                <button type="button" id="theme-toggle" class="inline-flex items-center px-3 py-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200">
+                    <span id="theme-toggle-icon-sun" class="mr-2 hidden">
+                        <i class="fa-solid fa-sun"></i>
+                    </span>
+                    <span id="theme-toggle-icon-moon" class="mr-2 hidden">
+                        <i class="fa-solid fa-moon"></i>
+                    </span>
+                    <span id="theme-toggle-label" class="text-sm">Tema</span>
                 </button>
             </div>
         </nav>
@@ -433,6 +443,46 @@
             e.preventDefault();
             mobileAtalhosMenu.classList.toggle('hidden');
             mobileAtalhosArrow.classList.toggle('rotate-180');
+        });
+    }
+
+    // Alternância de Tema (Dark/Light) com persistência em localStorage
+    function applyTheme(theme) {
+        if (theme === 'dark') {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+        try {
+            localStorage.setItem('theme', theme);
+        } catch (e) {}
+
+        const label = document.getElementById('theme-toggle-label');
+        const sun = document.getElementById('theme-toggle-icon-sun');
+        const moon = document.getElementById('theme-toggle-icon-moon');
+        if (label && sun && moon) {
+            label.textContent = theme === 'dark' ? 'Modo Escuro' : 'Modo Claro';
+            sun.classList.toggle('hidden', theme === 'dark');
+            moon.classList.toggle('hidden', theme !== 'dark');
+        }
+    }
+
+    (function initTheme() {
+        let stored = null;
+        try {
+            stored = localStorage.getItem('theme');
+        } catch (e) {}
+
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = stored ? stored : (prefersDark ? 'dark' : 'light');
+        applyTheme(theme);
+    })();
+
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', function () {
+            const isDark = document.documentElement.classList.contains('dark');
+            applyTheme(isDark ? 'light' : 'dark');
         });
     }
 </script>
