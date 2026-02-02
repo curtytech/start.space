@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4329166318141941" crossorigin="anonymous"></script>
+    <meta name="google-adsense-account" content="ca-pub-4329166318141941"></meta>
+
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -280,7 +282,6 @@
         </section>
 
         <section id="banner" class="py-4">
-            <p class="text-center text-lg font-bold text-gray-900 dark:text-white">banner ADS</p>
             <x-ad-banner :slot="config('services.adsense.slot_main')" />
         </section>
 
