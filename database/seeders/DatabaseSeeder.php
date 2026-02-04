@@ -18,6 +18,15 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
+            'password' => bcrypt('12345678'),
+            'role' => 'user',
+        ]);
+
+        User::factory()->create([
+            'name' => 'Admin',
+            'email' => 'admin@admin',
+            'password' => bcrypt('12345678'),
+            'role' => 'admin',
         ]);
 
         // Seed shortcuts and mega menu items
