@@ -94,6 +94,30 @@ class CategorySeeder extends Seeder
                 'sort_order' => 16,
                 'is_active' => true,
             ],
+            [
+                'name' => 'Educação',
+                'slug' => 'education',
+                'description' => 'Cursos e aprendizado online',
+                'color' => '#6366F1',
+                'sort_order' => 20,
+                'is_active' => true,
+            ],
+            [
+                'name' => 'Finanças',
+                'slug' => 'finance',
+                'description' => 'Bancos e investimentos',
+                'color' => '#16A34A',
+                'sort_order' => 21,
+                'is_active' => true,
+            ],
+            [
+                'name' => 'Comunicação',
+                'slug' => 'communication',
+                'description' => 'Ferramentas e plataformas de comunicação',
+                'color' => '#3B82F6',
+                'sort_order' => 22,
+                'is_active' => true,
+            ],
         ];
 
         foreach ($categories as $data) {

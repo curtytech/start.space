@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
 
         // Seed shortcuts and mega menu items
         $this->call([
+            CategorySeeder::class,
             ShortcutSeeder::class,
             MegaMenuItemSeeder::class,
         ]);
