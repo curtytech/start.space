@@ -437,6 +437,56 @@ class ShortcutSeeder extends Seeder
                 'sort_order' => 5,
                 'color' => '#5865F2',
             ],
+            [
+                'name' => 'Portfólio Phelipe Curty',
+                'url' => 'https://phelipecurty.vercel.app/',
+                'icon' => 'fas fa-user',
+                'category' => 'social',
+                'description' => 'Portfólio profissional com projetos e informações.',
+                'sort_order' => 3,
+                'color' => '#0F172A',
+            ],
+
+            [
+                'name' => 'YouTec Card',
+                'url' => 'https://card.you.tec.br/',
+                'icon' => 'fas fa-id-card',
+                'category' => 'social',
+                'description' => 'Cartão digital da plataforma YouTec.',
+                'sort_order' => 4,
+                'color' => '#8B5CF6',
+            ],
+
+            [
+                'name' => 'Cardápio Virtual',
+                'url' => 'https://cardapiovirtual.space/',
+                'icon' => 'fas fa-utensils',
+                'category' => 'social',
+                'description' => 'Cardápio digital para restaurantes e negócios.',
+                'sort_order' => 5,
+                'color' => '#22C55E',
+            ],
+
+            [
+                'name' => 'Habilidade Tech',
+                'url' => 'https://habilidade.tech/',
+                'icon' => 'fas fa-graduation-cap',
+                'category' => 'social',
+                'description' => 'Plataforma de educação e tecnologia.',
+                'sort_order' => 6,
+                'color' => '#0EA5E9',
+            ],
+
+            [
+                'name' => 'Teste Tudo',
+                'url' => 'https://testetudo.you.tec.br/',
+                'icon' => 'fas fa-vial',
+                'category' => 'social',
+                'description' => 'Ambiente de testes e validações da YouTec.',
+                'sort_order' => 7,
+                'color' => '#F59E0B',
+            ],
+
         ];
 
         foreach ($shortcuts as $shortcut) {

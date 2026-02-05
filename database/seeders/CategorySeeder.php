@@ -118,6 +118,14 @@ class CategorySeeder extends Seeder
                 'sort_order' => 22,
                 'is_active' => true,
             ],
+            [
+                'name' => 'YouTec',
+                'slug' => 'youtec',
+                'description' => 'Soluções e ferramentas da plataforma YouTec',
+                'color' => '#8B5CF6',
+                'sort_order' => 23,
+                'is_active' => true,
+            ],
         ];
 
         foreach ($categories as $data) {

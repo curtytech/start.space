@@ -517,6 +517,71 @@ class MegaMenuItemSeeder extends Seeder
                 'is_active' => true,
                 'open_in_new_tab' => true,
             ],
+            [
+                'title' => 'Portfólio',
+                'subtitle' => 'Portfólio profissional',
+                'url' => 'https://phelipecurty.vercel.app/',
+                'icon' => 'heroicon-o-user',
+                'color' => '#0F172A',
+                'description' => 'Portfólio profissional com projetos e informações de Phelipe Curty.',
+                'category' => 'YouTec',
+                'sort_order' => 41,
+                'is_active' => true,
+                'open_in_new_tab' => true,
+            ],
+
+            [
+                'title' => 'YouTec Card',
+                'subtitle' => 'Cartão digital',
+                'url' => 'https://card.you.tec.br/',
+                'icon' => 'heroicon-o-identification',
+                'color' => '#8B5CF6',
+                'description' => 'Cartão digital da plataforma YouTec para compartilhamento de informações.',
+                'category' => 'YouTec',
+                'sort_order' => 42,
+                'is_active' => true,
+                'open_in_new_tab' => true,
+            ],
+
+            [
+                'title' => 'Cardápio Virtual',
+                'subtitle' => 'Menu digital',
+                'url' => 'https://cardapiovirtual.space/',
+                'icon' => 'heroicon-o-clipboard-document-list',
+                'color' => '#22C55E',
+                'description' => 'Plataforma de cardápio virtual para restaurantes e negócios.',
+                'category' => 'YouTec',
+                'sort_order' => 43,
+                'is_active' => true,
+                'open_in_new_tab' => true,
+            ],
+
+            [
+                'title' => 'Habilidade Tech',
+                'subtitle' => 'Educação e tecnologia',
+                'url' => 'https://habilidade.tech/',
+                'icon' => 'heroicon-o-academic-cap',
+                'color' => '#0EA5E9',
+                'description' => 'Plataforma focada em desenvolvimento de habilidades tecnológicas.',
+                'category' => 'YouTec',
+                'sort_order' => 44,
+                'is_active' => true,
+                'open_in_new_tab' => true,
+            ],
+
+            [
+                'title' => 'Teste Tudo',
+                'subtitle' => 'Ambiente de testes',
+                'url' => 'https://testetudo.you.tec.br/',
+                'icon' => 'heroicon-o-beaker',
+                'color' => '#F59E0B',
+                'description' => 'Ambiente da YouTec para testes e validações de funcionalidades.',
+                'category' => 'YouTec',
+                'sort_order' => 45,
+                'is_active' => true,
+                'open_in_new_tab' => true,
+            ],
+
         ];
     }
 

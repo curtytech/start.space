@@ -54,30 +54,12 @@
                         <x-mega-menu />
                     </div>
                 </div>
-
-                {{-- Registrar: só para convidados e se a rota existir --}}
-                @if (Route::has('register'))
-                @guest
-                <a href="{{ route('register') }}" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors duration-200">
-                    Registrar
-                </a>
-                @endguest
-                @endif
-
-                <a href="/admin" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors duration-200">
-                    Login
-                </a>
             </div>
 
             <!-- Right Side Actions -->
             <!-- Dentro da header, no bloco "Right Side Actions" -->
             <div class="flex items-center space-x-4">
-                @if (Route::has('login'))
-                @auth
-                <a href="{{ url('/admin') }}" class="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 font-medium">
-                    Dashboard
-                </a>
-                @else
+                @guest
                 <a href="{{ route('login') }}" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors duration-200">
                     Login
                 </a>
@@ -86,8 +68,7 @@
                     Registrar
                 </a>
                 @endif
-                @endauth
-                @endif
+                @endguest
 
                 <!-- Mobile Menu Button -->
                 <button type="button" id="mobile-menu-button" class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200">
@@ -96,6 +77,14 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
                 </button>
+                @auth
+                <a href="{{ url('/admin') }}" class="hidden md:inline-flex items-center gap-2 px-4 py-1 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-colors duration-200 font-medium">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
+                    </svg>
+                    Dashboard
+                </a>
+                @endauth
                 <button type="button" id="theme-toggle" class="inline-flex items-center px-3 py-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200">
                     <span id="theme-toggle-icon-sun" class="mr-2 hidden">
                         <i class="fa-solid fa-sun"></i>
@@ -129,7 +118,7 @@
                 </div>
 
                 <a href="/admin" class="block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors duration-200">
-                    Admin
+                    Dashboard
                 </a>
                 @if (Route::has('login'))
                 @auth
@@ -175,16 +164,6 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                         </svg>
                     </a>
-                    <!-- <a href="#TaskList" class="inline-flex items-center px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 font-medium">
-                        Task List
-                    </a> -->
-                    @if (Route::has('login'))
-                    @guest
-                    <a href="{{ route('login') }}" class="inline-flex items-center px-8 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200 font-medium">
-                        Fazer Login
-                    </a>
-                    @endguest
-                    @endif
                 </div>
             </div>
         </section>

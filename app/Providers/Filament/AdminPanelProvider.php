@@ -17,7 +17,7 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
-use Filament\View\PanelsRenderHook;
+use App\Filament\Pages\Auth\Login;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -27,7 +27,7 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
-            ->login()
+            ->login(Login::class)
             ->colors([
                 'primary' => Color::Purple,
             ])
@@ -41,8 +41,12 @@ class AdminPanelProvider extends PanelProvider
                 // Widgets\AccountWidget::class,
                 // Widgets\FilamentInfoWidget::class,
             ])
-            ->renderHook(PanelsRenderHook::AUTH_LOGIN_FORM_BEFORE, fn () => view('filament.home-button'))
-            ->renderHook('panels::topbar.start', fn () => view('filament.home-button'))
+            ->navigationItems([
+                \Filament\Navigation\NavigationItem::make('Voltar ao Site')
+                    ->url('/')
+                    ->icon('heroicon-o-arrow-uturn-left')
+                    ->sort(1),
+            ])
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,
