@@ -15,6 +15,7 @@ use Filament\Tables;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 
 class CategoryResource extends Resource
@@ -25,6 +26,18 @@ class CategoryResource extends Resource
     protected static ?string $navigationLabel = 'Categorias';
     protected static ?string $pluralModelLabel = 'Categorias';
     protected static ?string $modelLabel = 'Categoria';
+
+    /**
+     * QUERY que busca as categorias
+     */
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->where('user_id', auth()->id())        
+            ->where('is_active', true)
+            ->orderBy('sort_order')
+            ->orderBy('name');
+    }
 
     public static function form(Form $form): Form
     {
@@ -39,23 +52,29 @@ class CategoryResource extends Resource
                             ->afterStateUpdated(function ($state, callable $set) {
                                 $set('slug', Str::slug($state));
                             }),
+
                         TextInput::make('slug')
                             ->label('Slug')
                             ->required()
                             ->unique(ignoreRecord: true),
+
                         Textarea::make('description')
                             ->label('Descrição')
                             ->rows(3),
+
                         ColorPicker::make('color')
                             ->label('Cor'),
+
                         TextInput::make('sort_order')
                             ->label('Ordem')
                             ->numeric()
                             ->default(0),
+
                         Forms\Components\Toggle::make('is_active')
                             ->label('Ativo')
                             ->default(true),
-                    ])->columns(2),
+                    ])
+                    ->columns(2),
             ]);
     }
 
@@ -67,15 +86,19 @@ class CategoryResource extends Resource
                     ->label('Nome')
                     ->sortable()
                     ->searchable(),
+
                 TextColumn::make('slug')
                     ->label('Slug')
                     ->toggleable(),
+
                 TextColumn::make('sort_order')
                     ->label('Ordem')
                     ->sortable(),
+
                 IconColumn::make('is_active')
                     ->label('Ativo')
                     ->boolean(),
+
                 TextColumn::make('created_at')
                     ->label('Criado em')
                     ->dateTime()
@@ -83,7 +106,8 @@ class CategoryResource extends Resource
                     ->toggleable(),
             ])
             ->filters([
-                Tables\Filters\TernaryFilter::make('is_active')->label('Ativo'),
+                Tables\Filters\TernaryFilter::make('is_active')
+                    ->label('Ativo'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -96,9 +120,9 @@ class CategoryResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListCategories::route('/'),
+            'index'  => Pages\ListCategories::route('/'),
             'create' => Pages\CreateCategory::route('/create'),
-            'edit' => Pages\EditCategory::route('/{record}/edit'),
+            'edit'   => Pages\EditCategory::route('/{record}/edit'),
         ];
     }
 }

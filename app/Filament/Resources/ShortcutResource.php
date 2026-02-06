@@ -3,8 +3,10 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ShortcutResource\Pages;
+use App\Models\Category;
 use App\Filament\Resources\ShortcutResource\RelationManagers;
 use App\Models\Shortcut;
+use App\View\Components\MegaMenu;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -15,7 +17,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class ShortcutResource extends Resource
 {
-    protected static ?string $model = Shortcut::class;
+    protected static ?string $model = MegaMenu::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-tag';
     
@@ -63,13 +65,9 @@ class ShortcutResource extends Resource
                         Forms\Components\Select::make('category')
                             ->label('Categoria')
                             ->required()
-                            ->options([
-                                'desenvolvimento' => 'Desenvolvimento',
-                                'design' => 'Design',
-                                'marketing' => 'Marketing',
-                                'produtividade' => 'Produtividade',
-                                'outros' => 'Outros',
-                            ])
+                            ->options(
+                                Category::activeOrdered()->pluck('name')
+                            )
                             ->searchable()
                             ->preload(),
                     ])
