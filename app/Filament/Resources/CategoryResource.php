@@ -56,7 +56,12 @@ class CategoryResource extends Resource
                         TextInput::make('slug')
                             ->label('Slug')
                             ->required()
-                            ->unique(ignoreRecord: true),
+                            ->unique(
+                                table: 'categories',
+                                column: 'slug',
+                                ignoreRecord: true,
+                                modifyRuleUsing: fn ($rule) => $rule->where('user_id', auth()->id())
+                            ),
 
                         Textarea::make('description')
                             ->label('Descrição')
