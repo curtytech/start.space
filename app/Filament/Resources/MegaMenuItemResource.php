@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\MegaMenuItemResource\Pages;
 use App\Filament\Resources\MegaMenuItemResource\RelationManagers;
+use App\Models\Category;
 use App\Models\MegaMenuItem;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -16,7 +17,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class MegaMenuItemResource extends Resource
 {
     protected static ?string $model = MegaMenuItem::class;
-
+    
     protected static ?string $navigationIcon = 'heroicon-o-squares-2x2';
     
     protected static ?string $navigationLabel = 'Atalhos';
@@ -24,6 +25,15 @@ class MegaMenuItemResource extends Resource
     protected static ?string $modelLabel = 'Item do Menu';
     
     protected static ?string $pluralModelLabel = 'Itens do Menu';
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->where('user_id', auth()->id())        
+            ->where('is_active', true)
+            ->orderBy('sort_order')
+            ->orderBy('title');
+    }
 
     public static function form(Form $form): Form
     {
@@ -66,13 +76,10 @@ class MegaMenuItemResource extends Resource
                         
                         Forms\Components\Select::make('category')
                             ->label('Categoria')
-                            ->options([
-                                'desenvolvimento' => 'Desenvolvimento',
-                                'design' => 'Design',
-                                'marketing' => 'Marketing',
-                                'produtividade' => 'Produtividade',
-                                'outros' => 'Outros',
-                            ])
+                            ->required()
+                            ->options(
+                                Category::activeOrdered()->pluck('name', 'name')
+                            )
                             ->searchable()
                             ->preload(),
                     ])
@@ -173,11 +180,6 @@ class MegaMenuItemResource extends Resource
             ->reorderable('sort_order');
     }
 
-    public static function getEloquentQuery(): Builder
-    {
-        return parent::getEloquentQuery()
-            ->where('user_id', auth()->id());
-    }
 
     public static function getRelations(): array
     {

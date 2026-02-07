@@ -70,9 +70,9 @@
                 </div>
                 <h3 class="text-sm font-medium text-gray-900 dark:text-white mb-2">Nenhum atalho disponível</h3>
                 <p class="text-xs text-gray-500 dark:text-gray-400 mb-3">Adicione alguns atalhos no painel administrativo.</p>
-                <a href="/admin" class="inline-flex items-center px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 text-xs font-medium">
-                    Fazer Login
-                </a>
+                    <a href="/admin/mega-menu-items" class="inline-flex items-center px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 text-xs font-medium">
+                        Dashboard
+                    </a>
             </div>
         @endif
     </div>

@@ -16,7 +16,10 @@ class MegaMenuItemSeeder extends Seeder
     {
         foreach (self::defaultItems() as $item) {
             $item['user_id'] = $userId;
-            MegaMenuItem::create($item);
+            MegaMenuItem::firstOrCreate(
+                ['user_id' => $userId, 'url' => $item['url']],
+                $item
+            );
         }
     }
 
