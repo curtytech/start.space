@@ -260,9 +260,9 @@
             </div>
         </section>
 
-        <section id="banner" class="py-4">
+        <!-- <section id="banner" class="py-4">
             <x-ad-banner :slot="config('services.adsense.slot_main')" />
-        </section>
+        </section> -->
 
         <!-- Footer -->
         <footer class="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 py-8">
