@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class CategorySeeder extends Seeder
@@ -10,9 +11,20 @@ class CategorySeeder extends Seeder
     /**
      * Seed the application's database.
      */
-    public function run(): void
+
+    public static function seedForUser(int $userId): void
     {
-        $categories = [
+        foreach (self::defaultItems() as $item) {
+            $item['user_id'] = $userId;
+            Category::firstOrCreate(
+                ['user_id' => $userId, 'slug' => $item['slug']],
+                $item
+            );
+        }
+    }
+    private static function defaultItems(): array
+    {
+         return [
             [
                 'name' => 'Desenvolvimento',
                 'slug' => 'desenvolvimento',
@@ -127,12 +139,20 @@ class CategorySeeder extends Seeder
                 'is_active' => true,
             ],
         ];
+    }
 
-        foreach ($categories as $data) {
-            Category::firstOrCreate(
-                ['slug' => $data['slug']],
-                $data
-            );
-        }
+     public function run(): void
+    {
+        $adminUser = User::where('role', 'admin')->first()
+            ?? User::first()
+            ?? User::factory()->create([
+                'name' => 'Admin',
+                'email' => 'admin@admin',
+                'role' => 'admin',
+            ]);
+
+        $userId = $adminUser->id;
+
+        self::seedForUser($userId);
     }
 }
