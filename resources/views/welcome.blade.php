@@ -77,6 +77,14 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
                 </button>
+                
+                @auth
+                <a href="{{ url('admin/mega-menu-items') }}" class="hidden md:inline-flex items-center gap-2 px-4 py-1 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-colors duration-200 font-medium">
+                   <i class="fa-solid fa-pen-to-square text-xs"></i>
+                    Editar atalhos
+                </a>
+                @endauth
+
                 @auth
                 <a href="{{ url('/admin') }}" class="hidden md:inline-flex items-center gap-2 px-4 py-1 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-colors duration-200 font-medium">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -158,10 +166,20 @@
                     Sua página inicial personalizada com atalhos rápidos e acesso fácil às suas ferramentas favoritas.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#mega-menu" class="inline-flex items-center justify-center px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 font-medium mx-auto">
+                   <a
+                        href="#mega-menu"
+                        class="inline-flex items-center justify-center
+                            px-8 py-3
+                            bg-gradient-to-r from-blue-600 to-purple-600
+                            text-white rounded-lg
+                            hover:from-blue-700 hover:to-purple-700
+                            transition-colors duration-200
+                            font-medium mx-auto"
+                    >
                         Explorar Atalhos
                         <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 9l-7 7-7-7" />
                         </svg>
                     </a>
                 </div>
