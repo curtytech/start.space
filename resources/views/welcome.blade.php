@@ -260,9 +260,28 @@
             </div>
         </section>
 
-        <section id="banner" class="py-4">
-            <x-ad-banner :slot="config('services.adsense.slot_main')" />
+        @auth
+        <section class="py-4">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8 flex justify-center">
+                <a
+                    href="{{ url('admin/mega-menu-items') }}"
+                    class="inline-flex items-center gap-2 px-6 py-3 
+                        bg-gradient-to-r from-blue-600 to-purple-600 
+                        text-white rounded-xl shadow-md 
+                        hover:from-blue-700 hover:to-purple-700 
+                        transition-all duration-200 font-medium"
+                >
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    Editar atalhos
+                </a>
+            </div>
         </section>
+        @endauth
+
+
+        <!-- <section id="banner" class="py-4">
+            <x-ad-banner :slot="config('services.adsense.slot_main')" />
+        </section> -->
 
         <!-- Footer -->
         <footer class="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 py-8">
