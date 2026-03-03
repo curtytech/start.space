@@ -5,7 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Models\User;
 use App\Observers\UserObserver;
-use Illuminate\Support\Facades\URL;
+// ESTA LINHA É A QUE FALTA:
+use Illuminate\Support\Facades\URL; 
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,8 +25,7 @@ class AppServiceProvider extends ServiceProvider
     {
         // User::observe(UserObserver::class);
 
-        // Force HTTPS in production
-        if ($this->app->environment('production')) {
+        if (config('app.env') !== 'local') {
             URL::forceScheme('https');
         }
     }
